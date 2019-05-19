@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "array-to-file-sheets": [
+        "dist/array-to-file-sheets"
+      ],
+      "array-to-file-sheets/*": [
+        "dist/array-to-file-sheets/*"
+      ]
+    }
   }
 }
