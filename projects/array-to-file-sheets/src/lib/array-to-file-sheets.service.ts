@@ -23,6 +23,9 @@ export class ArrayToFileSheetsService {
 
 
   makeHeader(header: any, customHeader) {
+
+    header = customHeader ? customHeader : header[0];
+    
     let tableHeader = this.OPENTABLEROWTAG;
     let headerTitle = '';
 // tslint:disable-next-line: forin
