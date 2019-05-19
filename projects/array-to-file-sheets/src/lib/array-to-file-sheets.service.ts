@@ -8,6 +8,8 @@ export class ArrayToFileSheetsService {
   constructor() { }
 
   headers: Array<string> = [];
+  OPENTABLEROWTAG = '<tr>';
+  CLOSETABLEROWTAG = '</tr>';
 
   /**
     * @param array Array of datas
@@ -21,7 +23,7 @@ export class ArrayToFileSheetsService {
 
 
   makeHeader(header: any, customHeader) {
-    let tableHeader = '';
+    let tableHeader = this.OPENTABLEROWTAG;
     let headerTitle = '';
 // tslint:disable-next-line: forin
     for (const key in header) {
@@ -29,8 +31,20 @@ export class ArrayToFileSheetsService {
       tableHeader += `<td> ${headerTitle} </td>`;
       this.headers.push(headerTitle);
     }
-    return tableHeader;
+    return tableHeader += this.CLOSETABLEROWTAG;
   }
 
-  
+  makeBody(body: Array<{ any }>) {
+    let tableBody = '';
+    for (const value of body) {
+      let tableBodyRow = this.OPENTABLEROWTAG;
+      for (const header of this.headers) {
+        const data = value[header] ? value[header] : '';
+        tableBodyRow += `<td> ${data} </td>`;
+      }
+      tableBodyRow += this.CLOSETABLEROWTAG;
+      tableBody += tableBodyRow;
+    }
+    return tableBody;
+  }
 }
