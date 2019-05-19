@@ -8,9 +8,9 @@ export class ArrayToFileSheetsService {
 
   constructor() { }
 
-  headers: Array<string> = [];
-  OPENTABLEROWTAG = '<tr>';
-  CLOSETABLEROWTAG = '</tr>';
+  private headers: Array<string> = [];
+  private OPENTABLEROWTAG = '<tr>';
+  private CLOSETABLEROWTAG = '</tr>';
 
   /**
     * @param array Array of datas
@@ -18,7 +18,7 @@ export class ArrayToFileSheetsService {
     * @param customHeader Custom Header
   */
   //TODO: make format dinamic
-  convert(array: Array<{ any }>, fileName: string, customHeader: any = true) {
+  convert(array: Array<any>, fileName: string, customHeader: any = false) {
     const header = this.makeHeader(array, customHeader);
     const body = this.makeBody(array);
 
@@ -54,8 +54,9 @@ export class ArrayToFileSheetsService {
     header = customHeader ? customHeader : header[0];
     let tableHeader = this.OPENTABLEROWTAG;
     let headerTitle = '';
+    this.headers = [];
     for (const key in header) {
-      headerTitle = customHeader ? key : header[key];
+      headerTitle = customHeader ? header[key] : key;
       tableHeader += `<td> ${headerTitle} </td>`;
       this.headers.push(headerTitle);
     }
