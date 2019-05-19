@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ArrayToFileSheetsService } from 'projects/array-to-file-sheets/src/public-api';
 
+import { ArrayToFileSheetsService } from 'dist/array-to-file-sheets';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,8 +14,7 @@ export class AppComponent {
     const array: Array<any> = [
       {
         a: '11',
-        b: '22',
-        c: '33',
+        b: '123',
         d: '44',
       },
       {
@@ -23,10 +22,10 @@ export class AppComponent {
         b: '23212',
         c: '356153',
         d: '46864',
+        e: '9999999999'
       },
       {
         a: '21311',
-        b: '2512',
         c: '32133',
         d: '465214',
       },
@@ -35,6 +34,7 @@ export class AppComponent {
         b: '26122',
         c: '41233',
         d: '45214',
+        e: '9999999999'
       }
     ];
 
